@@ -1,0 +1,37 @@
+/*
+ * Nghia-Nhan D Duong
+ * CMPR112 - Java Programming
+ * Test # 2
+ * Nov 18th 2014
+ *
+ */
+package dicegametestno2;
+import java.util.Scanner;
+
+/**
+ *
+ * @author KenOne
+ */
+public class DiceGameTestNo2 {
+
+    int diceValue = 0;
+    int userNum = 0;
+    int winGames = 0;
+    int lossGames = 0;
+    int tiedGames = 0;
+    
+    public static void main(String[] args){
+        Game game = new Game();
+        game.setNumOfDice();
+        game.setNumOfBounces();
+        game.createDices();
+        while (game.play) {
+            game.throwDices();
+            game.setPlayerGuess();
+            game.playGame();
+            game.playAgain();
+        }
+        game.printHistory();
+
+    }
+}
