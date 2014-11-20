@@ -1,0 +1,77 @@
+/*
+ * Nghia-Nhan D Duong
+ * CMPR112 - Java Programming
+ * Test # 2
+ * Nov 18th 2014
+ *
+ */
+package dicegametestno2;
+import java.util.Scanner;
+import java.util.Random;
+/**
+ *
+ * @author KenOne
+ */
+public class TwoDice extends Dice
+{
+    private int numOfThrows;
+    
+    public TwoDice()
+    {
+        super();
+    }
+    
+    public void playGame()
+    {
+        Scanner input = new Scanner(System.in);
+        String line;
+        Random rand = new Random();
+        boolean guessHigh;  //this will be true if the user guesses high
+        int dieThrow;
+        
+        while (true)
+        {
+            System.out.println("Two dice will be thrown."); 
+            System.out.println("Please guess whether the throws will high or low by entering \"hi\" or \"lo\".");
+            System.out.print("Or enter any other character to exit: ");
+            line = input.nextLine();
+            
+            if (line.equals("hi"))
+            {
+                guessHigh = true;
+            }
+            else if (line.equals("lo"))
+            {
+                guessHigh = false;
+            }
+            else
+            {
+                break;
+            }
+            
+            dieThrow = rand.nextInt(11) + 2;
+            this.addToThrows();
+            this.addToThrows();
+            if (guessHigh && (dieThrow >= 7))
+            {
+                System.out.println("\n\nYou were correct!!  The throws of the two dice were high.");
+            }
+            else if (guessHigh && (dieThrow < 7))
+            {
+                System.out.println("\n\nYou were incorrect.  The throws of the two dice were low.");
+            }
+            else if (!guessHigh && (dieThrow >= 7))
+            {
+                System.out.println("\n\nYou were incorrect.  The throws of the two dice were high.");
+            }
+            else if (!guessHigh && (dieThrow < 7))
+            {
+                System.out.println("\n\nYou were correct!!  The throws of the two dice were low.");
+            }
+            
+            System.out.println("The value of both dice were: " + dieThrow);
+            System.out.println("The number of total dice throws since the object was initiated is: " + this.getNumOfThrows());
+            System.out.println("");
+        }
+    }
+}
