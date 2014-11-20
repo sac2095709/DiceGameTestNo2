@@ -12,10 +12,11 @@ import java.util.Random;
  *
  * @author KenOne
  */
-public class ThreeDice extends Dice
+public class TwoDice extends Dice
 {
-
-    public ThreeDice()
+    private int numOfThrows;
+    
+    public TwoDice()
     {
         super();
     }
@@ -30,7 +31,7 @@ public class ThreeDice extends Dice
         
         while (true)
         {
-            System.out.println("Three dice will be thrown."); 
+            System.out.println("Two dice will be thrown."); 
             System.out.println("Please guess whether the throws will high or low by entering \"hi\" or \"lo\".");
             System.out.print("Or enter any other character to exit: ");
             line = input.nextLine();
@@ -48,28 +49,27 @@ public class ThreeDice extends Dice
                 break;
             }
             
-            dieThrow = rand.nextInt(16) + 3;
+            dieThrow = rand.nextInt(11) + 2;
             this.addToThrows();
             this.addToThrows();
-            this.addToThrows();
-            if (guessHigh && (dieThrow >= 10))
+            if (guessHigh && (dieThrow >= 7))
             {
-                System.out.println("\n\nYou were correct!!  The throws of the three dice were high.");
+                System.out.println("\n\nYou were correct!!  The throws of the two dice were high.");
             }
-            else if (guessHigh && (dieThrow < 10))
+            else if (guessHigh && (dieThrow < 7))
             {
-                System.out.println("\n\nYou were incorrect.  The throws of the three dice were low.");
+                System.out.println("\n\nYou were incorrect.  The throws of the two dice were low.");
             }
-            else if (!guessHigh && (dieThrow >= 10))
+            else if (!guessHigh && (dieThrow >= 7))
             {
-                System.out.println("\n\nYou were incorrect.  The throws of the three dice were high.");
+                System.out.println("\n\nYou were incorrect.  The throws of the two dice were high.");
             }
-            else if (!guessHigh && (dieThrow < 10))
+            else if (!guessHigh && (dieThrow < 7))
             {
-                System.out.println("\n\nYou were correct!!  The throws of the three dice were low.");
+                System.out.println("\n\nYou were correct!!  The throws of the two dice were low.");
             }
             
-            System.out.println("The value of the three dice were: " + dieThrow);
+            System.out.println("The value of both dice were: " + dieThrow);
             System.out.println("The number of total dice throws since the object was initiated is: " + this.getNumOfThrows());
             System.out.println("");
         }
